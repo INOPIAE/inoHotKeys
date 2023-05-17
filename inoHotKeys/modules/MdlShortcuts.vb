@@ -14,7 +14,7 @@ Module MdlShortcuts
         For Each items As String In My.Settings.Shortcuts
             Dim item() As String = items.Split(",")
 
-            hook.RegisterHotKey(item(0), KeyFromString(item(1)))
+            hook.RegisterHotKey(Math.Abs(CInt(item(0))), KeyFromString(item(1)))
         Next
         ' register the control + alt + F12 combination as hot key.
         'hook.RegisterHotKey(inoHotKeys.ModifierKeys.Control Or inoHotKeys.ModifierKeys.Alt, Keys.F12)

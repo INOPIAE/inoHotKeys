@@ -11,7 +11,7 @@ Public Class FrmShortcutSettings
 
     Private Sub FrmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If My.Settings.Shortcuts Is Nothing Then
+        If My.Settings.Shortcuts Is Nothing Or My.Settings.Shortcuts.Count = 0 Then
             Dim myArr() As String = {"6,M,New email"}
             userSettings.AddRange(myArr)
         Else
@@ -49,10 +49,19 @@ Public Class FrmShortcutSettings
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
         Dim uSettings As New StringCollection
         For Each r As DataGridViewRow In DgvSettings.Rows
-            uSettings.Add(-r.Cells(0).Value - r.Cells(1).Value * 2 - r.Cells(2).Value * 4 - r.Cells(3).Value * 8 & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim)
+            Dim intModifier As Int16 = -r.Cells(0).Value - r.Cells(1).Value * 2 - r.Cells(2).Value * 4 - r.Cells(3).Value * 8
+            If intModifier = 0 Then
+                MessageBox.Show(String.Format("You need to select at least one modifier key for the hot key '{0}'.", r.Cells(5).Value.Trim) & Environment.NewLine & "The change will not be saved.")
+                Exit Sub
+            Else
+                uSettings.Add(Math.Abs(intModifier) & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim)
+            End If
+
         Next
         My.Settings.Shortcuts = uSettings
         My.Settings.Save()
+        RemoveGlobalHotkeySupport()
+        AddGlobalHotkeySupport()
     End Sub
 
     Private Sub CmdOK_Click(sender As Object, e As EventArgs) Handles CmdOK.Click
