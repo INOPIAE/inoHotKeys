@@ -2,7 +2,7 @@
 Imports System.Collections.Specialized
 Imports System.Net
 
-Public Class FrmSettings
+Public Class FrmShortcutSettings
 
     Dim userSettings As New StringCollection()
     Private Sub CmdCancel_Click(sender As Object, e As EventArgs) Handles CmdCancel.Click

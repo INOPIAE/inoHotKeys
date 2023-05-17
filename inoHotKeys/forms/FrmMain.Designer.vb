@@ -52,6 +52,7 @@ Partial Class FrmMain
         StatusBarToolStripMenuItem = New ToolStripMenuItem()
         ToolsMenu = New ToolStripMenuItem()
         OptionsToolStripMenuItem = New ToolStripMenuItem()
+        ShortcutSettingsToolStripMenuItem = New ToolStripMenuItem()
         WindowsMenu = New ToolStripMenuItem()
         NewWindowToolStripMenuItem = New ToolStripMenuItem()
         CascadeToolStripMenuItem = New ToolStripMenuItem()
@@ -287,7 +288,7 @@ Partial Class FrmMain
         ' 
         ' ToolsMenu
         ' 
-        ToolsMenu.DropDownItems.AddRange(New ToolStripItem() {OptionsToolStripMenuItem})
+        ToolsMenu.DropDownItems.AddRange(New ToolStripItem() {OptionsToolStripMenuItem, ShortcutSettingsToolStripMenuItem})
         ToolsMenu.Name = "ToolsMenu"
         ToolsMenu.Size = New Size(46, 20)
         ToolsMenu.Text = "&Tools"
@@ -295,8 +296,15 @@ Partial Class FrmMain
         ' OptionsToolStripMenuItem
         ' 
         OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        OptionsToolStripMenuItem.Size = New Size(124, 22)
+        OptionsToolStripMenuItem.Size = New Size(180, 22)
         OptionsToolStripMenuItem.Text = "&Optionen"
+        OptionsToolStripMenuItem.Visible = False
+        ' 
+        ' ShortcutSettingsToolStripMenuItem
+        ' 
+        ShortcutSettingsToolStripMenuItem.Name = "ShortcutSettingsToolStripMenuItem"
+        ShortcutSettingsToolStripMenuItem.Size = New Size(180, 22)
+        ShortcutSettingsToolStripMenuItem.Text = "Shortcut Settings"
         ' 
         ' WindowsMenu
         ' 
@@ -308,37 +316,37 @@ Partial Class FrmMain
         ' NewWindowToolStripMenuItem
         ' 
         NewWindowToolStripMenuItem.Name = "NewWindowToolStripMenuItem"
-        NewWindowToolStripMenuItem.Size = New Size(180, 22)
+        NewWindowToolStripMenuItem.Size = New Size(174, 22)
         NewWindowToolStripMenuItem.Text = "&Neues Fenster"
         ' 
         ' CascadeToolStripMenuItem
         ' 
         CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
-        CascadeToolStripMenuItem.Size = New Size(180, 22)
+        CascadeToolStripMenuItem.Size = New Size(174, 22)
         CascadeToolStripMenuItem.Text = "Ü&berlappend"
         ' 
         ' TileVerticalToolStripMenuItem
         ' 
         TileVerticalToolStripMenuItem.Name = "TileVerticalToolStripMenuItem"
-        TileVerticalToolStripMenuItem.Size = New Size(180, 22)
+        TileVerticalToolStripMenuItem.Size = New Size(174, 22)
         TileVerticalToolStripMenuItem.Text = "&Nebeneinander"
         ' 
         ' TileHorizontalToolStripMenuItem
         ' 
         TileHorizontalToolStripMenuItem.Name = "TileHorizontalToolStripMenuItem"
-        TileHorizontalToolStripMenuItem.Size = New Size(180, 22)
+        TileHorizontalToolStripMenuItem.Size = New Size(174, 22)
         TileHorizontalToolStripMenuItem.Text = "&Untereinander"
         ' 
         ' CloseAllToolStripMenuItem
         ' 
         CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
-        CloseAllToolStripMenuItem.Size = New Size(180, 22)
+        CloseAllToolStripMenuItem.Size = New Size(174, 22)
         CloseAllToolStripMenuItem.Text = "&Alle schließen"
         ' 
         ' ArrangeIconsToolStripMenuItem
         ' 
         ArrangeIconsToolStripMenuItem.Name = "ArrangeIconsToolStripMenuItem"
-        ArrangeIconsToolStripMenuItem.Size = New Size(180, 22)
+        ArrangeIconsToolStripMenuItem.Size = New Size(174, 22)
         ArrangeIconsToolStripMenuItem.Text = "Symbole &anordnen"
         ' 
         ' HelpMenu
@@ -352,7 +360,7 @@ Partial Class FrmMain
         ' 
         ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
         ContentsToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.F1
-        ContentsToolStripMenuItem.Size = New Size(180, 22)
+        ContentsToolStripMenuItem.Size = New Size(152, 22)
         ContentsToolStripMenuItem.Text = "&Inhalt"
         ContentsToolStripMenuItem.Visible = False
         ' 
@@ -361,7 +369,7 @@ Partial Class FrmMain
         IndexToolStripMenuItem.Image = CType(resources.GetObject("IndexToolStripMenuItem.Image"), Image)
         IndexToolStripMenuItem.ImageTransparentColor = Color.Black
         IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        IndexToolStripMenuItem.Size = New Size(180, 22)
+        IndexToolStripMenuItem.Size = New Size(152, 22)
         IndexToolStripMenuItem.Text = "&Index"
         IndexToolStripMenuItem.Visible = False
         ' 
@@ -370,19 +378,20 @@ Partial Class FrmMain
         SearchToolStripMenuItem.Image = CType(resources.GetObject("SearchToolStripMenuItem.Image"), Image)
         SearchToolStripMenuItem.ImageTransparentColor = Color.Black
         SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        SearchToolStripMenuItem.Size = New Size(180, 22)
+        SearchToolStripMenuItem.Size = New Size(152, 22)
         SearchToolStripMenuItem.Text = "&Suchen"
+        SearchToolStripMenuItem.Visible = False
         ' 
         ' ToolStripSeparator8
         ' 
         ToolStripSeparator8.Name = "ToolStripSeparator8"
-        ToolStripSeparator8.Size = New Size(177, 6)
+        ToolStripSeparator8.Size = New Size(149, 6)
         ToolStripSeparator8.Visible = False
         ' 
         ' AboutToolStripMenuItem
         ' 
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New Size(180, 22)
+        AboutToolStripMenuItem.Size = New Size(152, 22)
         AboutToolStripMenuItem.Text = "&Info..."
         ' 
         ' ToolStrip
@@ -494,6 +503,7 @@ Partial Class FrmMain
         MainMenuStrip = MenuStrip
         Margin = New Padding(4, 3, 4, 3)
         Name = "FrmMain"
+        ShowInTaskbar = False
         Text = "inoHotKeys"
         MenuStrip.ResumeLayout(False)
         MenuStrip.PerformLayout()
@@ -557,4 +567,5 @@ Partial Class FrmMain
     Friend WithEvents StatusBarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolsMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NotifyIcon As NotifyIcon
+    Friend WithEvents ShortcutSettingsToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmSettings
+Partial Class FrmShortcutSettings
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -110,7 +110,7 @@ Partial Class FrmSettings
         CmdCancel.Text = "Cancel"
         CmdCancel.UseVisualStyleBackColor = True
         ' 
-        ' FrmSettings
+        ' FrmShortcutSettings
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -119,7 +119,7 @@ Partial Class FrmSettings
         Controls.Add(CmdSave)
         Controls.Add(CmdOK)
         Controls.Add(DgvSettings)
-        Name = "FrmSettings"
+        Name = "FrmShortcutSettings"
         Text = "Shortcut Settings"
         CType(DgvSettings, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

@@ -97,7 +97,8 @@ Public Class FrmMain
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddGlobalHotkeySupport()
 
-        Me.OptionsToolStripMenuItem.PerformClick()
+        Me.ShortcutSettingsToolStripMenuItem.PerformClick()
+        Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub FrmMain_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
@@ -105,11 +106,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-        With FrmSettings
-            .MdiParent = Me
-            .Show()
-            .WindowState = FormWindowState.Maximized
-        End With
+
     End Sub
 
     Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
@@ -128,5 +125,13 @@ Public Class FrmMain
         Me.Show()
         Me.WindowState = FormWindowState.Normal
         NotifyIcon.Visible = False
+    End Sub
+
+    Private Sub ShortcutSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShortcutSettingsToolStripMenuItem.Click
+        With FrmShortcutSettings
+            .MdiParent = Me
+            .Show()
+            .WindowState = FormWindowState.Maximized
+        End With
     End Sub
 End Class
