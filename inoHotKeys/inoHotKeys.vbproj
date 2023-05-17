@@ -6,6 +6,7 @@
     <StartupObject>inoHotKeys.FrmMain</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <Copyright>2023</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

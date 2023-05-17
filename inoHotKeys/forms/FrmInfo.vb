@@ -1,4 +1,6 @@
-﻿Public NotInheritable Class FrmInfo
+﻿Imports System.Buffers
+
+Public NotInheritable Class FrmInfo
 
     Private Sub FrmInfo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Legen Sie den Titel des Formulars fest.
@@ -14,7 +16,7 @@
         '    Projekteigenschaften (im Menü "Projekt") anpassen.
         Me.LabelProductName.Text = My.Application.Info.ProductName
         Me.LabelVersion.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
-        Me.LabelCopyright.Text = My.Application.Info.Copyright
+        Me.LabelCopyright.Text = My.Application.Info.Copyright & IIf(Year(Now) > 2023, " - " & Year(Now), "")
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description
     End Sub
