@@ -3,12 +3,12 @@ Imports System.Threading
 
 Public Class FrmOptions
     Private Sub CmdOK_Click(sender As Object, e As EventArgs) Handles CmdOK.Click
-        Me.CmdSave.PerformClick()
-        Me.Close()
+        CmdSave.PerformClick()
+        Close()
     End Sub
 
     Private Sub CmdCancel_Click(sender As Object, e As EventArgs) Handles CmdCancel.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
@@ -34,7 +34,7 @@ Public Class FrmOptions
     End Sub
 
     Private Sub AddTranslation()
-        Me.Text = My.Resources.Resources.OptionTitel
+        Text = My.Resources.Resources.OptionTitel
         LblLanguage.Text = My.Resources.Resources.OptionLanguage & ":"
         CmdCancel.Text = My.Resources.Resources.cmdCancel
         CmdSave.Text = My.Resources.Resources.cmdSave

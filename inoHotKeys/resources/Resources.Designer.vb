@@ -164,6 +164,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Open ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MainOpen() As String
+            Get
+                Return ResourceManager.GetString("MainOpen", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MainOptions() As String

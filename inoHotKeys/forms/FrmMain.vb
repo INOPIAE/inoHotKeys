@@ -1,14 +1,12 @@
 ﻿Imports System.ComponentModel
 Imports System.Globalization
-Imports System.Net.Mime.MediaTypeNames
 Imports System.Threading
-Imports System.Windows.Forms
 
 Public Class FrmMain
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
         ' Neue Instanz des untergeordneten Formulars erstellen.
-        Dim ChildForm As New System.Windows.Forms.Form
+        Dim ChildForm As New Form
         ' Vor der Anzeige dem MDI-Formular unterordnen.
         ChildForm.MdiParent = Me
 
@@ -41,7 +39,7 @@ Public Class FrmMain
 
 
     Private Sub ExitToolsStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub CutToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CutToolStripMenuItem.Click
@@ -57,32 +55,32 @@ Public Class FrmMain
     End Sub
 
     Private Sub ToolBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ToolBarToolStripMenuItem.Click
-        Me.ToolStrip.Visible = Me.ToolBarToolStripMenuItem.Checked
+        ToolStrip.Visible = ToolBarToolStripMenuItem.Checked
     End Sub
 
     Private Sub StatusBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles StatusBarToolStripMenuItem.Click
-        Me.StatusStrip.Visible = Me.StatusBarToolStripMenuItem.Checked
+        StatusStrip.Visible = StatusBarToolStripMenuItem.Checked
     End Sub
 
     Private Sub CascadeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CascadeToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.Cascade)
+        LayoutMdi(MdiLayout.Cascade)
     End Sub
 
     Private Sub TileVerticalToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles TileVerticalToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.TileVertical)
+        LayoutMdi(MdiLayout.TileVertical)
     End Sub
 
     Private Sub TileHorizontalToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles TileHorizontalToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.TileHorizontal)
+        LayoutMdi(MdiLayout.TileHorizontal)
     End Sub
 
     Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ArrangeIconsToolStripMenuItem.Click
-        Me.LayoutMdi(MdiLayout.ArrangeIcons)
+        LayoutMdi(MdiLayout.ArrangeIcons)
     End Sub
 
     Private Sub CloseAllToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CloseAllToolStripMenuItem.Click
         ' Alle untergeordneten Formulare des übergeordneten Formulars schließen
-        For Each ChildForm As Form In Me.MdiChildren
+        For Each ChildForm As Form In MdiChildren
             ChildForm.Close()
         Next
     End Sub
@@ -103,9 +101,9 @@ Public Class FrmMain
 
         AddGlobalHotkeySupport()
 
-        Me.ShortcutSettingsToolStripMenuItem.PerformClick()
+        ShortcutSettingsToolStripMenuItem.PerformClick()
 
-        Me.WindowState = FormWindowState.Minimized
+        WindowState = FormWindowState.Minimized
 
     End Sub
 
@@ -120,22 +118,26 @@ Public Class FrmMain
     End Sub
 
     Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        If Me.WindowState = FormWindowState.Minimized Then
+        If WindowState = FormWindowState.Minimized Then
             NotifyIcon.Visible = True
-            Me.Hide()
-            Me.ShowInTaskbar = False
+            Hide()
+            ShowInTaskbar = False
         Else
-            If Me.Width < minWidth Then Me.Width = minWidth
-            If Me.Height < minHeight Then Me.Height = minHeight
+            If Width < minWidth Then Width = minWidth
+            If Height < minHeight Then Height = minHeight
         End If
     End Sub
 
     Private Sub NotifyIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon.MouseDoubleClick
-        Me.Show()
-        Me.WindowState = FormWindowState.Normal
+        OpenFromNotifyIcon()
+    End Sub
+
+    Private Sub OpenFromNotifyIcon()
+        Show()
+        WindowState = FormWindowState.Normal
         NotifyIcon.Visible = False
-        Me.ShowInTaskbar = True
-        For Each ChildForm As Form In Me.MdiChildren
+        ShowInTaskbar = True
+        For Each ChildForm As Form In MdiChildren
             If ChildForm.Name = "FrmShortcutSettings" Then
                 ChildForm.WindowState = FormWindowState.Maximized
             End If
@@ -151,22 +153,32 @@ Public Class FrmMain
     End Sub
 
     Private Sub AddTranslation()
-        Me.FileMenu.Text = My.Resources.Resources.MainFile
-        Me.ExitToolStripMenuItem.Text = My.Resources.Resources.MainExit
+        FileMenu.Text = My.Resources.Resources.MainFile
+        ExitToolStripMenuItem.Text = My.Resources.Resources.MainExit
 
-        Me.ToolsMenu.Text = My.Resources.Resources.MainTools
-        Me.OptionsToolStripMenuItem.Text = My.Resources.Resources.MainOptions
-        Me.ShortcutSettingsToolStripMenuItem.Text = My.Resources.Resources.MainShortcutSettings
+        ToolsMenu.Text = My.Resources.Resources.MainTools
+        OptionsToolStripMenuItem.Text = My.Resources.Resources.MainOptions
+        ShortcutSettingsToolStripMenuItem.Text = My.Resources.Resources.MainShortcutSettings
 
-        Me.WindowsMenu.Text = My.Resources.Resources.MainWindows
-        Me.NewWindowToolStripMenuItem.Text = My.Resources.Resources.MainNewWindows
-        Me.CascadeToolStripMenuItem.Text = My.Resources.Resources.MainCascading
-        Me.TileVerticalToolStripMenuItem.Text = My.Resources.Resources.MainTileVertical
-        Me.TileHorizontalToolStripMenuItem.Text = My.Resources.Resources.MainTileHorizontal
-        Me.CloseAllToolStripMenuItem.Text = My.Resources.Resources.MainCloseAll
-        Me.ArrangeIconsToolStripMenuItem.Text = My.Resources.Resources.MainArrageIcons
+        WindowsMenu.Text = My.Resources.Resources.MainWindows
+        NewWindowToolStripMenuItem.Text = My.Resources.Resources.MainNewWindows
+        CascadeToolStripMenuItem.Text = My.Resources.Resources.MainCascading
+        TileVerticalToolStripMenuItem.Text = My.Resources.Resources.MainTileVertical
+        TileHorizontalToolStripMenuItem.Text = My.Resources.Resources.MainTileHorizontal
+        CloseAllToolStripMenuItem.Text = My.Resources.Resources.MainCloseAll
+        ArrangeIconsToolStripMenuItem.Text = My.Resources.Resources.MainArrageIcons
 
-        Me.HelpMenu.Text = My.Resources.Resources.MainHelp
-        Me.AboutToolStripMenuItem.Text = My.Resources.Resources.MainAbout
+        HelpMenu.Text = My.Resources.Resources.MainHelp
+        AboutToolStripMenuItem.Text = My.Resources.Resources.MainAbout
+
+        OpenToolStripMenuItemNotify.Text = My.Resources.Resources.MainOpen
+        ExitToolStripMenuItemNotify.Text = My.Resources.Resources.MainExit
+    End Sub
+    Private Sub OpenToolStripMenuItemNotify_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItemNotify.Click
+        OpenFromNotifyIcon()
+    End Sub
+
+    Private Sub ExitToolStripMenuItemNotify_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItemNotify.Click
+        ExitToolStripMenuItem.PerformClick()
     End Sub
 End Class

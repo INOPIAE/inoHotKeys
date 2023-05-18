@@ -207,4 +207,7 @@
   <data name="OptionTitel" xml:space="preserve">
     <value>Optionen</value>
   </data>
+  <data name="MainOpen" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
 </root>

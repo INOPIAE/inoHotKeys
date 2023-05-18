@@ -79,9 +79,13 @@ Partial Class FrmMain
         ToolStripStatusLabel = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
         NotifyIcon = New NotifyIcon(components)
+        ContextMenuStripNotifyIcon = New ContextMenuStrip(components)
+        OpenToolStripMenuItemNotify = New ToolStripMenuItem()
+        ExitToolStripMenuItemNotify = New ToolStripMenuItem()
         MenuStrip.SuspendLayout()
         ToolStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
+        ContextMenuStripNotifyIcon.SuspendLayout()
         SuspendLayout()
         ' 
         ' MenuStrip
@@ -296,13 +300,13 @@ Partial Class FrmMain
         ' OptionsToolStripMenuItem
         ' 
         OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        OptionsToolStripMenuItem.Size = New Size(180, 22)
+        OptionsToolStripMenuItem.Size = New Size(164, 22)
         OptionsToolStripMenuItem.Text = "&Optionen"
         ' 
         ' ShortcutSettingsToolStripMenuItem
         ' 
         ShortcutSettingsToolStripMenuItem.Name = "ShortcutSettingsToolStripMenuItem"
-        ShortcutSettingsToolStripMenuItem.Size = New Size(180, 22)
+        ShortcutSettingsToolStripMenuItem.Size = New Size(164, 22)
         ShortcutSettingsToolStripMenuItem.Text = "Shortcut Settings"
         ' 
         ' WindowsMenu
@@ -485,9 +489,28 @@ Partial Class FrmMain
         ' 
         ' NotifyIcon
         ' 
+        NotifyIcon.ContextMenuStrip = ContextMenuStripNotifyIcon
         NotifyIcon.Icon = CType(resources.GetObject("NotifyIcon.Icon"), Icon)
         NotifyIcon.Text = "inoHotKeys"
         NotifyIcon.Visible = True
+        ' 
+        ' ContextMenuStripNotifyIcon
+        ' 
+        ContextMenuStripNotifyIcon.Items.AddRange(New ToolStripItem() {OpenToolStripMenuItemNotify, ExitToolStripMenuItemNotify})
+        ContextMenuStripNotifyIcon.Name = "ContextMenuStripNotifyIcon"
+        ContextMenuStripNotifyIcon.Size = New Size(104, 48)
+        ' 
+        ' OpenToolStripMenuItemNotify
+        ' 
+        OpenToolStripMenuItemNotify.Name = "OpenToolStripMenuItemNotify"
+        OpenToolStripMenuItemNotify.Size = New Size(103, 22)
+        OpenToolStripMenuItemNotify.Text = "Open"
+        ' 
+        ' ExitToolStripMenuItemNotify
+        ' 
+        ExitToolStripMenuItemNotify.Name = "ExitToolStripMenuItemNotify"
+        ExitToolStripMenuItemNotify.Size = New Size(103, 22)
+        ExitToolStripMenuItemNotify.Text = "Exit"
         ' 
         ' FrmMain
         ' 
@@ -510,6 +533,7 @@ Partial Class FrmMain
         ToolStrip.PerformLayout()
         StatusStrip.ResumeLayout(False)
         StatusStrip.PerformLayout()
+        ContextMenuStripNotifyIcon.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -567,4 +591,7 @@ Partial Class FrmMain
     Friend WithEvents ToolsMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NotifyIcon As NotifyIcon
     Friend WithEvents ShortcutSettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ContextMenuStripNotifyIcon As ContextMenuStrip
+    Friend WithEvents OpenToolStripMenuItemNotify As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItemNotify As ToolStripMenuItem
 End Class
