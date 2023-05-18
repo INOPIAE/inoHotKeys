@@ -210,4 +210,7 @@
   <data name="MainOpen" xml:space="preserve">
     <value>Öffnen</value>
   </data>
+  <data name="OptionAutostart" xml:space="preserve">
+    <value>Anwendung automatisch mit Windows starten</value>
+  </data>
 </root>

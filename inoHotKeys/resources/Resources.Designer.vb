@@ -236,6 +236,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Autostart Application with Windows start ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property OptionAutostart() As String
+            Get
+                Return ResourceManager.GetString("OptionAutostart", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property OptionLanguage() As String

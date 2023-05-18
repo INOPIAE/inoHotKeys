@@ -17,6 +17,15 @@ Public Class FrmOptions
             MessageBox.Show(My.Resources.Resources.OptionMessageLanguageChange)
         End If
         Thread.CurrentThread.CurrentUICulture = New CultureInfo(ClsLang.CurrentLanguage)
+
+        My.Settings.Autostart = CkbAutostart.Checked
+
+        If CkbAutostart.Checked Then
+            CreateShortcutInStartUp("")
+        Else
+            IO.File.Delete(ShortCutPath)
+        End If
+
         My.Settings.Language = ClsLang.CurrentLanguage
         My.Settings.Save()
     End Sub
@@ -30,6 +39,9 @@ Public Class FrmOptions
             End If
         Next
         cboLanguage.SelectedIndex = currentIndex
+
+        CkbAutostart.Checked = My.Settings.Autostart
+
         AddTranslation()
     End Sub
 
@@ -39,5 +51,6 @@ Public Class FrmOptions
         CmdCancel.Text = My.Resources.Resources.cmdCancel
         CmdSave.Text = My.Resources.Resources.cmdSave
         CmdOK.Text = My.Resources.Resources.cmdOK
+        CkbAutostart.Text = My.Resources.Resources.OptionAutostart
     End Sub
 End Class

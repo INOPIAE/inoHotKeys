@@ -27,6 +27,7 @@ Partial Class FrmOptions
         CmdOK = New Button()
         LblLanguage = New Label()
         cboLanguage = New ComboBox()
+        CkbAutostart = New CheckBox()
         SuspendLayout()
         ' 
         ' CmdCancel
@@ -73,11 +74,22 @@ Partial Class FrmOptions
         cboLanguage.Size = New Size(332, 23)
         cboLanguage.TabIndex = 1
         ' 
+        ' CkbAutostart
+        ' 
+        CkbAutostart.AutoSize = True
+        CkbAutostart.Location = New Point(236, 109)
+        CkbAutostart.Name = "CkbAutostart"
+        CkbAutostart.Size = New Size(75, 19)
+        CkbAutostart.TabIndex = 5
+        CkbAutostart.Text = "Autostart"
+        CkbAutostart.UseVisualStyleBackColor = True
+        ' 
         ' FrmOptions
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(CkbAutostart)
         Controls.Add(cboLanguage)
         Controls.Add(LblLanguage)
         Controls.Add(CmdCancel)
@@ -94,4 +106,5 @@ Partial Class FrmOptions
     Friend WithEvents CmdOK As Button
     Friend WithEvents LblLanguage As Label
     Friend WithEvents cboLanguage As ComboBox
+    Friend WithEvents CkbAutostart As CheckBox
 End Class
