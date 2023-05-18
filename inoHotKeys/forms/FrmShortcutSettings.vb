@@ -8,7 +8,7 @@ Public Class FrmShortcutSettings
 
     Dim userSettings As New StringCollection()
     Private Sub CmdCancel_Click(sender As Object, e As EventArgs) Handles CmdCancel.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub FrmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -70,24 +70,28 @@ Public Class FrmShortcutSettings
     End Sub
 
     Private Sub CmdOK_Click(sender As Object, e As EventArgs) Handles CmdOK.Click
-        Me.CmdSave.PerformClick()
-        Me.Close()
+        CmdSave.PerformClick()
+        Close()
     End Sub
 
     Private Sub FrmSettings_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        If Me.Width < minWidth Then Me.Width = minWidth
-        If Me.Height < minHeight Then Me.Height = minHeight
+        If Width < minWidth Then Width = minWidth
+        If Height < minHeight Then Height = minHeight
 
-        Me.DgvSettings.Width = Me.Width - 50
-        Me.DgvSettings.Height = Me.Height - 20 - CmdOK.Width
+        DgvSettings.Width = Width - 50
+        DgvSettings.Height = Height - 20 - CmdOK.Width
 
-        Me.CmdOK.Left = Me.Width - 50 - CmdOK.Width
-        Me.CmdOK.Top = Me.Height - 50 - CmdOK.Height
+        CmdOK.Left = Width - 50 - CmdOK.Width
+        CmdOK.Top = Height - 50 - CmdOK.Height
 
-        Me.CmdSave.Left = (Me.Width - 50 - CmdOK.Width) / 2
-        Me.CmdSave.Top = Me.Height - 50 - CmdOK.Height
+        CmdSave.Left = (Width - 50 - CmdOK.Width) / 2
+        CmdSave.Top = Height - 50 - CmdOK.Height
 
-        Me.CmdCancel.Top = Me.Height - 50 - CmdOK.Height
+        CmdCancel.Top = Height - 50 - CmdOK.Height
+
+        With DgvSettings
+            .Columns(6).Width = .Width - .Columns(0).Width - .Columns(1).Width - .Columns(2).Width - .Columns(3).Width - .Columns(4).Width - 60
+        End With
     End Sub
 
     Private Sub AddTranslation()
@@ -105,6 +109,6 @@ Public Class FrmShortcutSettings
             .Columns(6).HeaderCell.Value = My.Resources.Resources.ShortSetAction
         End With
 
-        Me.Text = My.Resources.Resources.ShortSetCaption
+        Text = My.Resources.Resources.ShortSetCaption
     End Sub
 End Class
