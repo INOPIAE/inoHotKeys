@@ -29,6 +29,7 @@ Partial Class FrmShortcutSettings
         Win = New DataGridViewCheckBoxColumn()
         Taste = New DataGridViewTextBoxColumn()
         Action = New DataGridViewTextBoxColumn()
+        ActionTranslaion = New DataGridViewTextBoxColumn()
         CmdOK = New Button()
         CmdSave = New Button()
         CmdCancel = New Button()
@@ -40,7 +41,7 @@ Partial Class FrmShortcutSettings
         DgvSettings.AllowUserToAddRows = False
         DgvSettings.AllowUserToDeleteRows = False
         DgvSettings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DgvSettings.Columns.AddRange(New DataGridViewColumn() {Alt, Ctrl, Shift, Win, Taste, Action})
+        DgvSettings.Columns.AddRange(New DataGridViewColumn() {Alt, Ctrl, Shift, Win, Taste, Action, ActionTranslaion})
         DgvSettings.Location = New Point(15, 15)
         DgvSettings.Name = "DgvSettings"
         DgvSettings.RowTemplate.Height = 25
@@ -81,14 +82,20 @@ Partial Class FrmShortcutSettings
         ' 
         Action.HeaderText = "Action"
         Action.Name = "Action"
+        Action.Visible = False
         Action.Width = 200
+        ' 
+        ' ActionTranslaion
+        ' 
+        ActionTranslaion.HeaderText = "ActionTranslaion"
+        ActionTranslaion.Name = "ActionTranslaion"
         ' 
         ' CmdOK
         ' 
         CmdOK.Location = New Point(510, 224)
         CmdOK.Name = "CmdOK"
         CmdOK.Size = New Size(130, 30)
-        CmdOK.TabIndex = 1
+        CmdOK.TabIndex = 2
         CmdOK.Text = "OK"
         CmdOK.UseVisualStyleBackColor = True
         ' 
@@ -106,7 +113,7 @@ Partial Class FrmShortcutSettings
         CmdCancel.Location = New Point(26, 224)
         CmdCancel.Name = "CmdCancel"
         CmdCancel.Size = New Size(130, 30)
-        CmdCancel.TabIndex = 1
+        CmdCancel.TabIndex = 3
         CmdCancel.Text = "Cancel"
         CmdCancel.UseVisualStyleBackColor = True
         ' 
@@ -135,4 +142,5 @@ Partial Class FrmShortcutSettings
     Friend WithEvents Win As DataGridViewCheckBoxColumn
     Friend WithEvents Taste As DataGridViewTextBoxColumn
     Friend WithEvents Action As DataGridViewTextBoxColumn
+    Friend WithEvents ActionTranslaion As DataGridViewTextBoxColumn
 End Class

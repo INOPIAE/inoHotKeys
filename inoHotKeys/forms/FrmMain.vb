@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel
+Imports System.Globalization
 Imports System.Net.Mime.MediaTypeNames
+Imports System.Threading
 Imports System.Windows.Forms
 
 Public Class FrmMain
@@ -89,16 +91,22 @@ Public Class FrmMain
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         With FrmInfo
-            .MdiParent = Me
             .Show()
         End With
     End Sub
 
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Thread.CurrentThread.CurrentUICulture = New CultureInfo(ClsLang.CurrentLanguage)
+
+        AddTranslation()
+
         AddGlobalHotkeySupport()
 
         Me.ShortcutSettingsToolStripMenuItem.PerformClick()
+
         Me.WindowState = FormWindowState.Minimized
+
     End Sub
 
     Private Sub FrmMain_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
@@ -106,16 +114,17 @@ Public Class FrmMain
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-
+        With FrmOptions
+            .Show()
+        End With
     End Sub
 
     Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         If Me.WindowState = FormWindowState.Minimized Then
             NotifyIcon.Visible = True
             Me.Hide()
+            Me.ShowInTaskbar = False
         Else
-
-
             If Me.Width < minWidth Then Me.Width = minWidth
             If Me.Height < minHeight Then Me.Height = minHeight
         End If
@@ -125,6 +134,12 @@ Public Class FrmMain
         Me.Show()
         Me.WindowState = FormWindowState.Normal
         NotifyIcon.Visible = False
+        Me.ShowInTaskbar = True
+        For Each ChildForm As Form In Me.MdiChildren
+            If ChildForm.Name = "FrmShortcutSettings" Then
+                ChildForm.WindowState = FormWindowState.Maximized
+            End If
+        Next
     End Sub
 
     Private Sub ShortcutSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShortcutSettingsToolStripMenuItem.Click
@@ -133,5 +148,25 @@ Public Class FrmMain
             .Show()
             .WindowState = FormWindowState.Maximized
         End With
+    End Sub
+
+    Private Sub AddTranslation()
+        Me.FileMenu.Text = My.Resources.Resources.MainFile
+        Me.ExitToolStripMenuItem.Text = My.Resources.Resources.MainExit
+
+        Me.ToolsMenu.Text = My.Resources.Resources.MainTools
+        Me.OptionsToolStripMenuItem.Text = My.Resources.Resources.MainOptions
+        Me.ShortcutSettingsToolStripMenuItem.Text = My.Resources.Resources.MainShortcutSettings
+
+        Me.WindowsMenu.Text = My.Resources.Resources.MainWindows
+        Me.NewWindowToolStripMenuItem.Text = My.Resources.Resources.MainNewWindows
+        Me.CascadeToolStripMenuItem.Text = My.Resources.Resources.MainCascading
+        Me.TileVerticalToolStripMenuItem.Text = My.Resources.Resources.MainTileVertical
+        Me.TileHorizontalToolStripMenuItem.Text = My.Resources.Resources.MainTileHorizontal
+        Me.CloseAllToolStripMenuItem.Text = My.Resources.Resources.MainCloseAll
+        Me.ArrangeIconsToolStripMenuItem.Text = My.Resources.Resources.MainArrageIcons
+
+        Me.HelpMenu.Text = My.Resources.Resources.MainHelp
+        Me.AboutToolStripMenuItem.Text = My.Resources.Resources.MainAbout
     End Sub
 End Class

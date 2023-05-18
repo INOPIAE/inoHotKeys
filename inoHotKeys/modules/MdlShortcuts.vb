@@ -7,10 +7,12 @@ Module MdlShortcuts
     Public minWidth As Int16 = 570
     Public minHeight As Int16 = 270
 
+    Public ClsLang As New ClsTranslation
+
     Public Sub AddGlobalHotkeySupport()
 
         ' register the event that is fired after the key press.
-        AddHandler hook.KeyPressed, AddressOf hook_KeyPressed
+        AddHandler hook.KeyPressed, AddressOf Hook_KeyPressed
         For Each items As String In My.Settings.Shortcuts
             Dim item() As String = items.Split(",")
 
@@ -24,7 +26,7 @@ Module MdlShortcuts
         hook.Dispose()
     End Sub
 
-    Private Sub hook_KeyPressed(sender As Object, e As KeyPressedEventArgs)
+    Private Sub Hook_KeyPressed(sender As Object, e As KeyPressedEventArgs)
         ' show the keys pressed in a label.
         ' Debug.Print(e.Modifier.ToString() + " + " + e.Key.ToString())
         For Each items As String In My.Settings.Shortcuts

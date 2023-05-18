@@ -1,6 +1,8 @@
 ﻿Imports System.Collections
 Imports System.Collections.Specialized
+Imports System.Globalization
 Imports System.Net
+Imports System.Threading
 
 Public Class FrmShortcutSettings
 
@@ -43,7 +45,10 @@ Public Class FrmShortcutSettings
 
             newRow.Cells(4).Value = item(1).Trim
             newRow.Cells(5).Value = item(2).Trim
+            newRow.Cells(6).Value = ClsLang.GetTranslatedAction(item(2).Trim)
         Next
+
+        AddTranslation()
     End Sub
 
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
@@ -51,7 +56,7 @@ Public Class FrmShortcutSettings
         For Each r As DataGridViewRow In DgvSettings.Rows
             Dim intModifier As Int16 = -r.Cells(0).Value - r.Cells(1).Value * 2 - r.Cells(2).Value * 4 - r.Cells(3).Value * 8
             If intModifier = 0 Then
-                MessageBox.Show(String.Format("You need to select at least one modifier key for the hot key '{0}'.", r.Cells(5).Value.Trim) & Environment.NewLine & "The change will not be saved.")
+                MessageBox.Show(String.Format(My.Resources.Resources.ShortSetMessage1, r.Cells(5).Value.Trim) & Environment.NewLine & My.Resources.Resources.ShortSetMessage2)
                 Exit Sub
             Else
                 uSettings.Add(Math.Abs(intModifier) & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim)
@@ -83,5 +88,23 @@ Public Class FrmShortcutSettings
         Me.CmdSave.Top = Me.Height - 50 - CmdOK.Height
 
         Me.CmdCancel.Top = Me.Height - 50 - CmdOK.Height
+    End Sub
+
+    Private Sub AddTranslation()
+        CmdCancel.Text = My.Resources.Resources.cmdCancel
+        CmdSave.Text = My.Resources.Resources.cmdSave
+        CmdOK.Text = My.Resources.Resources.cmdOK
+
+        With DgvSettings
+            .Columns(0).HeaderCell.Value = My.Resources.Resources.ShortSetAlt
+            .Columns(1).HeaderCell.Value = My.Resources.Resources.ShortSetCrtl
+            .Columns(2).HeaderCell.Value = My.Resources.Resources.ShortSetShift
+            .Columns(3).HeaderCell.Value = My.Resources.Resources.ShortSetWin
+            .Columns(4).HeaderCell.Value = My.Resources.Resources.ShortSetKey
+            .Columns(5).HeaderCell.Value = My.Resources.Resources.ShortSetAction
+            .Columns(6).HeaderCell.Value = My.Resources.Resources.ShortSetAction
+        End With
+
+        Me.Text = My.Resources.Resources.ShortSetCaption
     End Sub
 End Class

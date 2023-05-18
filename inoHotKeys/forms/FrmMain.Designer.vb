@@ -298,7 +298,6 @@ Partial Class FrmMain
         OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         OptionsToolStripMenuItem.Size = New Size(180, 22)
         OptionsToolStripMenuItem.Text = "&Optionen"
-        OptionsToolStripMenuItem.Visible = False
         ' 
         ' ShortcutSettingsToolStripMenuItem
         ' 

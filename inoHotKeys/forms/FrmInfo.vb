@@ -19,10 +19,15 @@ Public NotInheritable Class FrmInfo
         Me.LabelCopyright.Text = My.Application.Info.Copyright & IIf(Year(Now) > 2023, " - " & Year(Now), "")
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description
+
+        AddTranslation()
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
         Me.Close()
     End Sub
 
+    Private Sub AddTranslation()
+        Me.OKButton.Text = My.Resources.Resources.cmdOK
+    End Sub
 End Class

@@ -143,7 +143,6 @@ Partial Class FrmInfo
         TextBoxDescription.Size = New Size(300, 143)
         TextBoxDescription.TabIndex = 0
         TextBoxDescription.TabStop = False
-        TextBoxDescription.Text = resources.GetString("TextBoxDescription.Text")
         ' 
         ' OKButton
         ' 
