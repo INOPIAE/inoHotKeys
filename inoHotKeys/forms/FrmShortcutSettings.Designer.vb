@@ -23,9 +23,6 @@ Partial Class FrmShortcutSettings
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         DgvSettings = New DataGridView()
-        CmdOK = New Button()
-        CmdSave = New Button()
-        CmdCancel = New Button()
         Alt = New DataGridViewCheckBoxColumn()
         Ctrl = New DataGridViewCheckBoxColumn()
         Shift = New DataGridViewCheckBoxColumn()
@@ -34,6 +31,9 @@ Partial Class FrmShortcutSettings
         Action = New DataGridViewTextBoxColumn()
         ActionTranslaion = New DataGridViewTextBoxColumn()
         Activated = New DataGridViewCheckBoxColumn()
+        CmdOK = New Button()
+        CmdSave = New Button()
+        CmdCancel = New Button()
         CType(DgvSettings, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -48,33 +48,6 @@ Partial Class FrmShortcutSettings
         DgvSettings.RowTemplate.Height = 25
         DgvSettings.Size = New Size(519, 161)
         DgvSettings.TabIndex = 0
-        ' 
-        ' CmdOK
-        ' 
-        CmdOK.Location = New Point(510, 224)
-        CmdOK.Name = "CmdOK"
-        CmdOK.Size = New Size(130, 30)
-        CmdOK.TabIndex = 2
-        CmdOK.Text = "OK"
-        CmdOK.UseVisualStyleBackColor = True
-        ' 
-        ' CmdSave
-        ' 
-        CmdSave.Location = New Point(237, 224)
-        CmdSave.Name = "CmdSave"
-        CmdSave.Size = New Size(130, 30)
-        CmdSave.TabIndex = 1
-        CmdSave.Text = "Save"
-        CmdSave.UseVisualStyleBackColor = True
-        ' 
-        ' CmdCancel
-        ' 
-        CmdCancel.Location = New Point(26, 224)
-        CmdCancel.Name = "CmdCancel"
-        CmdCancel.Size = New Size(130, 30)
-        CmdCancel.TabIndex = 3
-        CmdCancel.Text = "Cancel"
-        CmdCancel.UseVisualStyleBackColor = True
         ' 
         ' Alt
         ' 
@@ -123,6 +96,33 @@ Partial Class FrmShortcutSettings
         Activated.HeaderText = "Activated"
         Activated.Name = "Activated"
         Activated.Width = 60
+        ' 
+        ' CmdOK
+        ' 
+        CmdOK.Location = New Point(510, 224)
+        CmdOK.Name = "CmdOK"
+        CmdOK.Size = New Size(130, 30)
+        CmdOK.TabIndex = 2
+        CmdOK.Text = "OK"
+        CmdOK.UseVisualStyleBackColor = True
+        ' 
+        ' CmdSave
+        ' 
+        CmdSave.Location = New Point(237, 224)
+        CmdSave.Name = "CmdSave"
+        CmdSave.Size = New Size(130, 30)
+        CmdSave.TabIndex = 1
+        CmdSave.Text = "Save"
+        CmdSave.UseVisualStyleBackColor = True
+        ' 
+        ' CmdCancel
+        ' 
+        CmdCancel.Location = New Point(26, 224)
+        CmdCancel.Name = "CmdCancel"
+        CmdCancel.Size = New Size(130, 30)
+        CmdCancel.TabIndex = 3
+        CmdCancel.Text = "Cancel"
+        CmdCancel.UseVisualStyleBackColor = True
         ' 
         ' FrmShortcutSettings
         ' 

@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports Outlook = Microsoft.Office.Interop.Outlook
 Module MdlOutlook
     Public Sub CreateEmail()
+
         Dim olApp As Outlook.Application
         Dim olMail As Outlook.MailItem
 
@@ -17,4 +18,14 @@ Module MdlOutlook
         olMail.Display()
         olInspector.Activate()
     End Sub
+
+    Public Function IsOutlookInstalled() As Boolean
+        Dim officeType As Type = Type.GetTypeFromProgID("Outlook.Application")
+
+        If officeType Is Nothing Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 End Module

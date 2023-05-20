@@ -35,7 +35,7 @@ Module MdlShortcuts
             Dim item() As String = items.Split(",")
 
             If e.Modifier = item(0) And e.Key = KeyFromString(item(1)) And item(3) = 1 And item(2) = "New email" Then
-                CreateEmail()
+                If IsOutlookInstalled() Then CreateEmail()
                 Exit Sub
             End If
             If e.Modifier = item(0) And e.Key = KeyFromString(item(1)) And item(3) = 1 And item(2) = "Sleep" Then

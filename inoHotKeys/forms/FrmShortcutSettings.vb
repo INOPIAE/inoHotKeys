@@ -19,7 +19,7 @@ Public Class FrmShortcutSettings
         userSettings = My.Settings.Shortcuts
 
 
-            For Each items As String In userSettings
+        For Each items As String In userSettings
             Dim item() As String = items.Split(",")
 
             Dim index = DgvSettings.Rows.Add()
@@ -45,7 +45,11 @@ Public Class FrmShortcutSettings
             newRow.Cells(4).Value = item(1).Trim
             newRow.Cells(5).Value = item(2).Trim
             newRow.Cells(6).Value = ClsLang.GetTranslatedAction(item(2).Trim)
+            newRow.Cells(6).ReadOnly = True
             newRow.Cells(7).Value = IIf(item(3) = 1, True, False)
+            If IsOutlookInstalled() = False And item(2).Trim = "New email" Then
+                newRow.ReadOnly = True
+            End If
         Next
 
         AddTranslation()
@@ -59,6 +63,11 @@ Public Class FrmShortcutSettings
                 MessageBox.Show(String.Format(My.Resources.Resources.ShortSetMessage1, r.Cells(5).Value.Trim) & Environment.NewLine & My.Resources.Resources.ShortSetMessage2)
                 Exit Sub
             Else
+                Dim intActivated As Int16 = IIf(r.Cells(7).Value = True, 1, 0)
+                If r.Cells(5).Value = "New Email" And IsOutlookInstalled() = False And intActivated = 1 Then
+                    intActivated = 0
+                End If
+
                 uSettings.Add(Math.Abs(intModifier) & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim & "," & IIf(r.Cells(7).Value = True, 1, 0))
             End If
 
@@ -111,5 +120,11 @@ Public Class FrmShortcutSettings
         End With
 
         Text = My.Resources.Resources.ShortSetCaption
+    End Sub
+
+    Private Sub DgvSettings_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles DgvSettings.CellMouseEnter
+        If e.RowIndex = 0 Then
+            DgvSettings.Rows(e.RowIndex).Cells(e.ColumnIndex).ToolTipText = My.Resources.Resources.ShortSetMsgOutlookMissing
+        End If
     End Sub
 End Class

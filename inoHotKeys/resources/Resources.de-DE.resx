@@ -219,4 +219,7 @@
   <data name="ShortcutSendToSleep" xml:space="preserve">
     <value>Windows in den Schlafzustand versetzen</value>
   </data>
+  <data name="ShortSetMsgOutlookMissing" xml:space="preserve">
+    <value>Hotkey nicht verfügbar, da MS Outlook nicht installiert ist.</value>
+  </data>
 </root>

@@ -353,6 +353,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Hotkey not available as MS Outlook is not installed. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property ShortSetMsgOutlookMissing() As String
+            Get
+                Return ResourceManager.GetString("ShortSetMsgOutlookMissing", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Shift ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property ShortSetShift() As String

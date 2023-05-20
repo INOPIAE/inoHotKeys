@@ -219,4 +219,7 @@
   <data name="ShortSetActivated" xml:space="preserve">
     <value>Activated</value>
   </data>
+  <data name="ShortSetMsgOutlookMissing" xml:space="preserve">
+    <value>Hotkey not available as MS Outlook is not installed.</value>
+  </data>
 </root>
