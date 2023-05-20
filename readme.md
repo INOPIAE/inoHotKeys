@@ -24,4 +24,4 @@ To install navigate to [https://github.com/INOPIAE/inoHotKeys/blob/master/inoHot
 
 Download and start the setup.exe and follow the instructions.
 
-If neccessary install the requiered componets.
+If neccessary install the required componets.
