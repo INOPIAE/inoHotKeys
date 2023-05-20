@@ -1,0 +1,28 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "inoHotKeys/1.0.0": {
+        "runtime": {
+          "inoHotKeys.dll": {}
+        },
+        "resources": {
+          "de-DE/inoHotKeys.resources.dll": {
+            "locale": "de-DE"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "inoHotKeys/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
