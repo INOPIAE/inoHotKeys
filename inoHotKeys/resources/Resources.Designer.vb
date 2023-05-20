@@ -227,15 +227,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die New Outlook email ähnelt.
-        '''</summary>
-        Friend Shared ReadOnly Property NewOutlookEmail() As String
-            Get
-                Return ResourceManager.GetString("NewOutlookEmail", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Autostart Application with Windows start ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property OptionAutostart() As String
@@ -272,11 +263,38 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die New Outlook email ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property ShortcutNewOutlookEmail() As String
+            Get
+                Return ResourceManager.GetString("ShortcutNewOutlookEmail", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Send Windows to sleep ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property ShortcutSendToSleep() As String
+            Get
+                Return ResourceManager.GetString("ShortcutSendToSleep", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Action ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property ShortSetAction() As String
             Get
                 Return ResourceManager.GetString("ShortSetAction", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Activated ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property ShortSetActivated() As String
+            Get
+                Return ResourceManager.GetString("ShortSetActivated", resourceCulture)
             End Get
         End Property
         

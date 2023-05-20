@@ -13,14 +13,13 @@ Public Class FrmShortcutSettings
 
     Private Sub FrmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If My.Settings.Shortcuts Is Nothing Or My.Settings.Shortcuts.Count = 0 Then
-            Dim myArr() As String = {"6,M,New email"}
-            userSettings.AddRange(myArr)
-        Else
-            userSettings = My.Settings.Shortcuts
+        If My.Settings.Shortcuts Is Nothing Or My.Settings.Shortcuts.Count < ShortcutCount Then
+            InitializeShortcuts()
         End If
+        userSettings = My.Settings.Shortcuts
 
-        For Each items As String In userSettings
+
+            For Each items As String In userSettings
             Dim item() As String = items.Split(",")
 
             Dim index = DgvSettings.Rows.Add()
@@ -46,6 +45,7 @@ Public Class FrmShortcutSettings
             newRow.Cells(4).Value = item(1).Trim
             newRow.Cells(5).Value = item(2).Trim
             newRow.Cells(6).Value = ClsLang.GetTranslatedAction(item(2).Trim)
+            newRow.Cells(7).Value = IIf(item(3) = 1, True, False)
         Next
 
         AddTranslation()
@@ -59,7 +59,7 @@ Public Class FrmShortcutSettings
                 MessageBox.Show(String.Format(My.Resources.Resources.ShortSetMessage1, r.Cells(5).Value.Trim) & Environment.NewLine & My.Resources.Resources.ShortSetMessage2)
                 Exit Sub
             Else
-                uSettings.Add(Math.Abs(intModifier) & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim)
+                uSettings.Add(Math.Abs(intModifier) & "," & r.Cells(4).Value.Trim & "," & r.Cells(5).Value.Trim & "," & IIf(r.Cells(7).Value = True, 1, 0))
             End If
 
         Next
@@ -90,7 +90,7 @@ Public Class FrmShortcutSettings
         CmdCancel.Top = Height - 50 - CmdOK.Height
 
         With DgvSettings
-            .Columns(6).Width = .Width - .Columns(0).Width - .Columns(1).Width - .Columns(2).Width - .Columns(3).Width - .Columns(4).Width - 60
+            .Columns(6).Width = .Width - .Columns(0).Width - .Columns(1).Width - .Columns(2).Width - .Columns(3).Width - .Columns(4).Width - .Columns(7).Width - 65
         End With
     End Sub
 
@@ -107,6 +107,7 @@ Public Class FrmShortcutSettings
             .Columns(4).HeaderCell.Value = My.Resources.Resources.ShortSetKey
             .Columns(5).HeaderCell.Value = My.Resources.Resources.ShortSetAction
             .Columns(6).HeaderCell.Value = My.Resources.Resources.ShortSetAction
+            .Columns(7).HeaderCell.Value = My.Resources.Resources.ShortSetActivated
         End With
 
         Text = My.Resources.Resources.ShortSetCaption

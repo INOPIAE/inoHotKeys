@@ -189,7 +189,7 @@
   <data name="ShortSetMessage1" xml:space="preserve">
     <value>Es muss mindestens eine Zusatzaste für den Hott Key '{0}' ausgewählt sein.</value>
   </data>
-  <data name="NewOutlookEmail" xml:space="preserve">
+  <data name="ShortcutNewOutlookEmail" xml:space="preserve">
     <value>Neue Outlook E-Mail</value>
   </data>
   <data name="MainAbout" xml:space="preserve">
@@ -212,5 +212,11 @@
   </data>
   <data name="OptionAutostart" xml:space="preserve">
     <value>Anwendung automatisch mit Windows starten</value>
+  </data>
+  <data name="ShortSetActivated" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="ShortcutSendToSleep" xml:space="preserve">
+    <value>Windows in den Schlafzustand versetzen</value>
   </data>
 </root>

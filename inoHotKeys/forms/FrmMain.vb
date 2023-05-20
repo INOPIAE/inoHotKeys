@@ -99,6 +99,8 @@ Public Class FrmMain
 
         AddTranslation()
 
+        InitializeShortcuts()
+
         AddGlobalHotkeySupport()
 
         ShortcutSettingsToolStripMenuItem.PerformClick()

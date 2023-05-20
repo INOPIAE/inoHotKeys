@@ -20,7 +20,9 @@ Public Class ClsTranslation
     Public Function GetTranslatedAction(strAction As String) As String
         Select Case strAction
             Case "New email"
-                Return My.Resources.Resources.NewOutlookEmail
+                Return My.Resources.Resources.ShortcutNewOutlookEmail
+            Case "Sleep"
+                Return My.Resources.Resources.ShortcutSendToSleep
         End Select
         Return ""
     End Function

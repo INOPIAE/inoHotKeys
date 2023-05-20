@@ -189,7 +189,7 @@
   <data name="MainShortcutSettings" xml:space="preserve">
     <value>Shortcut Settings</value>
   </data>
-  <data name="NewOutlookEmail" xml:space="preserve">
+  <data name="ShortcutNewOutlookEmail" xml:space="preserve">
     <value>New Outlook email</value>
   </data>
   <data name="MainHelp" xml:space="preserve">
@@ -212,5 +212,11 @@
   </data>
   <data name="OptionAutostart" xml:space="preserve">
     <value>Autostart Application with Windows start</value>
+  </data>
+  <data name="ShortcutSendToSleep" xml:space="preserve">
+    <value>Send Windows to sleep</value>
+  </data>
+  <data name="ShortSetActivated" xml:space="preserve">
+    <value>Activated</value>
   </data>
 </root>

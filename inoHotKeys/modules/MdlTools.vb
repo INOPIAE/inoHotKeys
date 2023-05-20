@@ -15,4 +15,7 @@ Module MdlTools
         Shortcut.Save()
     End Sub
 
+    Public Sub SendToSleep()
+        Application.SetSuspendState(PowerState.Hibernate, False, False)
+    End Sub
 End Module

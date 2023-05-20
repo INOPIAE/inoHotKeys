@@ -23,6 +23,9 @@ Partial Class FrmShortcutSettings
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         DgvSettings = New DataGridView()
+        CmdOK = New Button()
+        CmdSave = New Button()
+        CmdCancel = New Button()
         Alt = New DataGridViewCheckBoxColumn()
         Ctrl = New DataGridViewCheckBoxColumn()
         Shift = New DataGridViewCheckBoxColumn()
@@ -30,9 +33,7 @@ Partial Class FrmShortcutSettings
         Taste = New DataGridViewTextBoxColumn()
         Action = New DataGridViewTextBoxColumn()
         ActionTranslaion = New DataGridViewTextBoxColumn()
-        CmdOK = New Button()
-        CmdSave = New Button()
-        CmdCancel = New Button()
+        Activated = New DataGridViewCheckBoxColumn()
         CType(DgvSettings, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -41,12 +42,39 @@ Partial Class FrmShortcutSettings
         DgvSettings.AllowUserToAddRows = False
         DgvSettings.AllowUserToDeleteRows = False
         DgvSettings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DgvSettings.Columns.AddRange(New DataGridViewColumn() {Alt, Ctrl, Shift, Win, Taste, Action, ActionTranslaion})
+        DgvSettings.Columns.AddRange(New DataGridViewColumn() {Alt, Ctrl, Shift, Win, Taste, Action, ActionTranslaion, Activated})
         DgvSettings.Location = New Point(15, 15)
         DgvSettings.Name = "DgvSettings"
         DgvSettings.RowTemplate.Height = 25
         DgvSettings.Size = New Size(519, 161)
         DgvSettings.TabIndex = 0
+        ' 
+        ' CmdOK
+        ' 
+        CmdOK.Location = New Point(510, 224)
+        CmdOK.Name = "CmdOK"
+        CmdOK.Size = New Size(130, 30)
+        CmdOK.TabIndex = 2
+        CmdOK.Text = "OK"
+        CmdOK.UseVisualStyleBackColor = True
+        ' 
+        ' CmdSave
+        ' 
+        CmdSave.Location = New Point(237, 224)
+        CmdSave.Name = "CmdSave"
+        CmdSave.Size = New Size(130, 30)
+        CmdSave.TabIndex = 1
+        CmdSave.Text = "Save"
+        CmdSave.UseVisualStyleBackColor = True
+        ' 
+        ' CmdCancel
+        ' 
+        CmdCancel.Location = New Point(26, 224)
+        CmdCancel.Name = "CmdCancel"
+        CmdCancel.Size = New Size(130, 30)
+        CmdCancel.TabIndex = 3
+        CmdCancel.Text = "Cancel"
+        CmdCancel.UseVisualStyleBackColor = True
         ' 
         ' Alt
         ' 
@@ -87,35 +115,14 @@ Partial Class FrmShortcutSettings
         ' 
         ' ActionTranslaion
         ' 
-        ActionTranslaion.HeaderText = "ActionTranslaion"
+        ActionTranslaion.HeaderText = "ActionTranslation"
         ActionTranslaion.Name = "ActionTranslaion"
         ' 
-        ' CmdOK
+        ' Activated
         ' 
-        CmdOK.Location = New Point(510, 224)
-        CmdOK.Name = "CmdOK"
-        CmdOK.Size = New Size(130, 30)
-        CmdOK.TabIndex = 2
-        CmdOK.Text = "OK"
-        CmdOK.UseVisualStyleBackColor = True
-        ' 
-        ' CmdSave
-        ' 
-        CmdSave.Location = New Point(237, 224)
-        CmdSave.Name = "CmdSave"
-        CmdSave.Size = New Size(130, 30)
-        CmdSave.TabIndex = 1
-        CmdSave.Text = "Save"
-        CmdSave.UseVisualStyleBackColor = True
-        ' 
-        ' CmdCancel
-        ' 
-        CmdCancel.Location = New Point(26, 224)
-        CmdCancel.Name = "CmdCancel"
-        CmdCancel.Size = New Size(130, 30)
-        CmdCancel.TabIndex = 3
-        CmdCancel.Text = "Cancel"
-        CmdCancel.UseVisualStyleBackColor = True
+        Activated.HeaderText = "Activated"
+        Activated.Name = "Activated"
+        Activated.Width = 60
         ' 
         ' FrmShortcutSettings
         ' 
@@ -143,4 +150,5 @@ Partial Class FrmShortcutSettings
     Friend WithEvents Taste As DataGridViewTextBoxColumn
     Friend WithEvents Action As DataGridViewTextBoxColumn
     Friend WithEvents ActionTranslaion As DataGridViewTextBoxColumn
+    Friend WithEvents Activated As DataGridViewCheckBoxColumn
 End Class
